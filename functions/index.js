@@ -37,6 +37,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     agent.add(`I'm sorry, can you try again?`);
   }
 
+  //C'est function qui est déployé dans le bot! intentTest est rappelé en ligne 68
   function intentTest(agent) {
     agent.add('It Works!');
   }
@@ -62,6 +63,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   let intentMap = new Map();
   intentMap.set('Default Welcome Intent', welcome);
   intentMap.set('Default Fallback Intent', fallback);
+
+  //intentMap.set => appel l'intent configuré dans Dialogflow, ensuite la string est = au nom de l'entité configuré dans le bot.
   intentMap.set('new.intent.test', intentTest)
   // intentMap.set('your intent name here', yourFunctionHandler);
   agent.handleRequest(intentMap);
