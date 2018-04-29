@@ -1,0 +1,98 @@
+[debug] [2018-04-25T15:59:31.189Z] ----------------------------------------------------------------------
+[debug] [2018-04-25T15:59:31.192Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init functions
+[debug] [2018-04-25T15:59:31.193Z] CLI Version:   3.18.4
+[debug] [2018-04-25T15:59:31.193Z] Platform:      darwin
+[debug] [2018-04-25T15:59:31.193Z] Node Version:  v8.9.3
+[debug] [2018-04-25T15:59:31.193Z] Time:          Wed Apr 25 2018 17:59:31 GMT+0200 (CEST)
+[debug] [2018-04-25T15:59:31.193Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-04-25T15:59:31.206Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] [2018-04-25T15:59:31.206Z] > authorizing via signed-in user
+[info] 
+     🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥     🔥🔥🔥     🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥
+     🔥🔥        🔥🔥  🔥🔥     🔥🔥 🔥🔥       🔥🔥     🔥🔥  🔥🔥   🔥🔥  🔥🔥       🔥🔥
+     🔥🔥🔥🔥🔥🔥    🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥   🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥
+     🔥🔥        🔥🔥  🔥🔥    🔥🔥  🔥🔥       🔥🔥     🔥🔥 🔥🔥     🔥🔥       🔥🔥 🔥🔥
+     🔥🔥       🔥🔥🔥🔥 🔥🔥     🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥     🔥🔥  🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/alexandremontoya/Dialogflow
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2018-04-25T15:59:31.212Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-04-25T15:59:31.213Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/lJN3fa77vMInkihqOKDvRGkeyvKzRJc6VaLfdvvL0gI',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Wed Apr 25 2018 17:59:31 GMT+0200 (CEST)
+[debug] [2018-04-25T15:59:31.388Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-25T15:59:31.403Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects  
+  
+ Wed Apr 25 2018 17:59:31 GMT+0200 (CEST)
+[debug] [2018-04-25T15:59:32.355Z] <<< HTTP RESPONSE 200
+[info] i  .firebaserc already has a default project, skipping
+[info] 
+=== Functions Setup
+[info] 
+[info] A functions directory will be created in your project with a Node.js
+[info] package pre-configured. Functions can be deployed with firebase deploy.
+[info] 
+[debug] [2018-04-25T15:59:32.359Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-25T15:59:32.359Z] > authorizing via signed-in user
+[debug] [2018-04-25T15:59:32.360Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-04-25T15:59:32.360Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/lJN3fa77vMInkihqOKDvRGkeyvKzRJc6VaLfdvvL0gI',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Wed Apr 25 2018 17:59:32 GMT+0200 (CEST)
+[debug] [2018-04-25T15:59:32.461Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-25T15:59:32.480Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/yvette  
+  
+ Wed Apr 25 2018 17:59:32 GMT+0200 (CEST)
+[debug] [2018-04-25T15:59:32.979Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-25T15:59:32.981Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/yvette/tokens  
+  
+ Wed Apr 25 2018 17:59:32 GMT+0200 (CEST)
+[debug] [2018-04-25T15:59:33.955Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-25T15:59:33.973Z] >>> HTTP REQUEST PATCH https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/yvette?updateMask=usageSettings  
+ { usageSettings: { consumerEnableStatus: 'ENABLED' } } 
+ Wed Apr 25 2018 17:59:33 GMT+0200 (CEST)
+[debug] [2018-04-25T15:59:33.974Z] >>> HTTP REQUEST PATCH https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/yvette?updateMask=usageSettings  
+ { usageSettings: { consumerEnableStatus: 'ENABLED' } } 
+ Wed Apr 25 2018 17:59:33 GMT+0200 (CEST)
+[debug] [2018-04-25T15:59:35.645Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-25T15:59:35.847Z] <<< HTTP RESPONSE 200
+[info] ✔  Wrote functions/package.json
+[info] ✔  Wrote functions/index.js
+[debug] [2018-04-25T16:00:03.720Z] TypeError: Cannot read property 'setRawMode' of null
+    at ReadStream.setRawMode (tty.js:61:16)
+    at Interface._setRawMode (readline.js:243:16)
+    at Interface.close (readline.js:367:10)
+    at ReadStream.ontermend (readline.js:156:10)
+    at emitNone (events.js:111:20)
+    at ReadStream.emit (events.js:208:7)
+    at endReadableNT (_stream_readable.js:1056:12)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:218:9)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-04-25T16:00:03.724Z] Error: write EIO
+    at _errnoException (util.js:1024:11)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:867:14)
+[error] 
+[error] Error: An unexpected error has occurred.
