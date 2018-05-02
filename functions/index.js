@@ -37,6 +37,13 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     agent.add(`I'm sorry, can you try again?`);
   }
 
+<<<<<<< HEAD
+=======
+  //C'est une function qui est déployée dans le bot! intentTest est rappelé en ligne 68
+  function intentTest(agent) {
+    agent.add('It Works!');
+  }
+>>>>>>> 921485d4b19c35d59b0d4a00fca2ae8254fa4ecb
   // // // Uncomment and edit to make your own intent handler
   // // intentMap.set('New Intent', yourFunctionHandler);
   // // // below to get this funciton to be run when a Dialogflow intent is matched
