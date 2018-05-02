@@ -37,19 +37,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     agent.add(`I'm sorry, can you try again?`);
   }
 
-  //C'est function qui est déployé dans le bot! intentTest est rappelé en ligne 68
-  function intentTest(agent) {
-    agent.add('Hello Guizmo!');
-    agent.add(new Card{
-      tilte: 'Guizmo est marrant',
-      imageUrl: 'http://www.posepartagemedia.com/images/ctrb/IMG0115-w800.jpg',
-      text: 'Ce chat est mortel',
-      buttonText: 'Voir plus',
-      buttonUrl: 'https://firebasestorage.googleapis.com/v0/b/yvette.appspot.com/o/guizmo.jpg?alt=media&token=645fc1f3-e3cc-49d3-8079-50c4c3371039'
-    })
-  }
   // // // Uncomment and edit to make your own intent handler
-  // intentMap.set('New Intent', yourFunctionHandler);
+  // // intentMap.set('New Intent', yourFunctionHandler);
   // // // below to get this funciton to be run when a Dialogflow intent is matched
   // function yourFunctionHandler(agent) {
   //   agent.add(`This message is from Dialogflow's Cloud Functions for Firebase editor!`);
@@ -66,13 +55,38 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   //   agent.setContext({ name: 'weather', lifespan: 2, parameters: { city: 'Rome' }});
   // }
 
+  function intentTest(agent) {
+    const name = agent.parameters.name;
+
+    if (name === `Guizmo`){
+        agent.add('Im the best cat!');
+        agent.add(new Card({
+          title: 'Guizmo est marrant',
+          imageUrl: 'http://www.posepartagemedia.com/images/ctrb/IMG0115-w800.jpg',
+          text: 'Ce chat est mortel',
+          buttonText: 'Voir plus',
+          buttonUrl: 'https://firebasestorage.googleapis.com/v0/b/yvette.appspot.com/o/guizmo.jpg?alt=media&token=645fc1f3-e3cc-49d3-8079-50c4c3371039'
+        })
+      );
+
+    } else if (name === `Chappy`) {
+        agent.add('Im a dog motherfucker!');
+        agent.add(new Card({
+          title: 'Les chiens au pouvoir',
+          imageUrl: 'http://www.ohpacha.com/ARTICLE/Les-dangers-du-soleil-pour-les-yeux-du-chien.jpg',
+          text: 'La doggatitude',
+          buttonText: 'Voir plus',
+          buttonUrl: 'http://www.ohpacha.com/ARTICLE/Les-dangers-du-soleil-pour-les-yeux-du-chien.jpg'
+        })
+      );
+    }
+ }
+
   // Run the proper function handler based on the matched Dialogflow intent name
   let intentMap = new Map();
   intentMap.set('Default Welcome Intent', welcome);
   intentMap.set('Default Fallback Intent', fallback);
-
-  //intentMap.set => appel l'intent configuré dans Dialogflow, ensuite la string est = au nom de l'entité configuré dans le bot.
-  intentMap.set('new.intent.test', intentTest)
   // intentMap.set('your intent name here', yourFunctionHandler);
+  intentMap.set('new.intent.test', intentTest)
   agent.handleRequest(intentMap);
 });
