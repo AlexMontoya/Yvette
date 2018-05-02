@@ -39,7 +39,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
   //C'est function qui est déployé dans le bot! intentTest est rappelé en ligne 68
   function intentTest(agent) {
-    agent.add('It Works!');
+    agent.add('Hello Guizmo!');
   }
   // // // Uncomment and edit to make your own intent handler
   // intentMap.set('New Intent', yourFunctionHandler);
