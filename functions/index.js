@@ -40,6 +40,13 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   //C'est function qui est déployé dans le bot! intentTest est rappelé en ligne 68
   function intentTest(agent) {
     agent.add('Hello Guizmo!');
+    agent.add(new Card{
+      tilte: 'Guizmo est marrant',
+      imageUrl: 'http://www.posepartagemedia.com/images/ctrb/IMG0115-w800.jpg',
+      text: 'Ce chat est mortel',
+      buttonText: 'Voir plus',
+      buttonUrl: 'https://firebasestorage.googleapis.com/v0/b/yvette.appspot.com/o/guizmo.jpg?alt=media&token=645fc1f3-e3cc-49d3-8079-50c4c3371039'
+    })
   }
   // // // Uncomment and edit to make your own intent handler
   // intentMap.set('New Intent', yourFunctionHandler);
