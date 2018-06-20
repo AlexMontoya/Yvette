@@ -20,6 +20,10 @@ const functions = require('firebase-functions');
 const {WebhookClient} = require('dialogflow-fulfillment');
 const {Card, Suggestion} = require('dialogflow-fulfillment');
 
+// Initialize DB Connection
+const admin = require('firebase-admin');
+admin.initializeApp()
+
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => {
@@ -27,6 +31,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   const agent = new WebhookClient({ request, response });
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
+  const REQUEST_PERMISSION_ACTION = 'request_permission';
 
   function welcome(agent) {
     agent.add(`Welcome to my agent!`);
@@ -37,23 +42,21 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     agent.add(`I'm sorry, can you try again?`);
   }
 
-  // // // Uncomment and edit to make your own intent handler
-  // // intentMap.set('New Intent', yourFunctionHandler);
-  // // // below to get this funciton to be run when a Dialogflow intent is matched
-  // function yourFunctionHandler(agent) {
-  //   agent.add(`This message is from Dialogflow's Cloud Functions for Firebase editor!`);
-  //   agent.add(new Card({
-  //       title: `Title: this is a card title`,
-  //       imageUrl: 'https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png',
-  //       text: `This is the body text of a card.  You can even use line\n  breaks and emoji! 💁`,
-  //       buttonText: 'This is a button',
-  //       buttonUrl: 'https://assistant.google.com/'
-  //     })
-  //   );
-  //   agent.add(new Suggestion(`Quick Reply`));
-  //   agent.add(new Suggestion(`Suggestion`));
-  //   agent.setContext({ name: 'weather', lifespan: 2, parameters: { city: 'Rome' }});
-  // }
+  // Retrieve Data from users
+  function savedName(agent) {
+    const nameParam = agent.parameters.name;
+    const name = nameParam;
+
+    agent.add('Thank you, ' + name + '!');
+
+    return admin.database().ref('/users').push({name: name}).then((snapshot) => {
+      console.log('database write sucessful: ' + snapshot.ref.toString());
+    });
+  }
+
+  function requestPermission(agent) {
+    agent.askForPermissions('To Locate You')
+  }
 
   //Intent des recettes individuelles!
   function intentReceips(agent) {
@@ -133,7 +136,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   let intentMap = new Map();
   intentMap.set('Default Welcome Intent', welcome);
   intentMap.set('Default Fallback Intent', fallback);
-  // intentMap.set('your intent name here', yourFunctionHandler);
-  intentMap.set('receip.intent', intentReceips)
+  //intentMap.set('REQUEST_PERMISSION_ACTION', requestPermission);
+  //intentMap.set('market_location', marketLocation);
+  intentMap.set('intent.test', savedName);
+  intentMap.set('receip.intent', intentReceips);
   agent.handleRequest(intentMap);
 });
